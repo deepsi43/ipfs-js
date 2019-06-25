@@ -1,0 +1,36 @@
+<html>
+    <head>
+     <meta charset='UTF-8'>
+     
+     <meta name="viewport" content = "width=device-width,initial-scale=1.0">
+     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    </head>
+    <body>
+        <h1>HEllo</h1>
+       <div id="files">Your Files will show up here</div>
+      <script src="ipfs.js"></script>
+      <script>
+          const $files = document.querySelector('#files')
+          const node = new window.Ipfs()
+          node.once('ready',()=>{
+              console.log('node is ready');
+              node.swarm.connect('/ip4/169.254.129.248/tcp/4001/ipfs/QmckJJBNcbLtZxgBtU5nN8kFe3ht8No3aoXMS4QGNMmPXU',(err,res)=>{
+                  console.log(err,res)
+              })
+              node.ls(window.location.pathname, (err,files)=>{
+                  if (err) throw err
+                  files.forEach((file)=>{
+                  const $file = document.createElement('div')
+                  $file.innerText = file.name
+                  $files.appendChild($file)
+                  console.log(files)
+              })
+          })
+          node.once('error',(err)=>{
+             console.log(err)
+         })
+          });
+      </script>
+
+    </body>
+</html>

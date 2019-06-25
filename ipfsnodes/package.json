@@ -1,0 +1,14 @@
+{
+  "name": "ipfsnodes",
+  "version": "1.0.0",
+  "description": "nodes",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "ipfs"
+  ],
+  "author": "deepthi",
+  "license": "ISC"
+}
